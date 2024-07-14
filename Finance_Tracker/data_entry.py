@@ -4,7 +4,7 @@ date_format = "%d-%m-%Y"
 CATEGORIES = {"I": "Income", "E": "Expense"}
 
 
-def get_date(prompt, allow_default=False):
+def get_date(prompt, allow_default=False): // checking user input is valid or not
     date_str = input(prompt)
     if allow_default and not date_str:
         return datetime.today().strftime(date_format)
