@@ -5,10 +5,10 @@ from data_entry import get_amount, get_category, get_date, get_description
 import matplotlib.pyplot as plt
 
 
-class CSV:
-    CSV_FILE = "finance_data.csv"
-    COLUMNS = ["date", "amount", "category","description"]
-    FORMAT = "%d-%m-%Y"
+class CSV: // Creating class
+    CSV_FILE = "finance_data.csv" // filepath
+    COLUMNS = ["date", "amount", "category","description"] // column names in the table
+    FORMAT = "%d-%m-%Y" // dateformat
     @classmethod
     def initialize_csv(cls):
         try:
@@ -18,7 +18,7 @@ class CSV:
             df.to_csv(cls.CSV_FILE, index=False)
     
     @classmethod
-    def add_entry(cls, date, amount, category, description):
+    def add_entry(cls, date, amount, category, description): // converting dictionary values into rows in csv
         new_entry = {
             "date":date,
             "amount":amount,
@@ -75,7 +75,7 @@ def add():
     CSV.add_entry(date, amount, category, description)
 
 
-def plot_transactions(df):
+def plot_transactions(df): //function to plot graph
     df.set_index("date", inplace=True)
 
     income_df = df[df["category"] == "Income"].resample("0").sum().reindex(df.index, fill_value=0)
@@ -93,7 +93,7 @@ def plot_transactions(df):
     plt.show()
 
 
-def main():
+def main(): // main method
     while True:
         print("\n1. Add a new transaction")
         print("2. View transactions and summary within a date range")
